@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UOMO Barbería Tradicional — Bogotá</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dark: #8B6914;
+    --gold-glow: rgba(201,168,76,0.18);
+    --black: #0A0A0A;
+    --black-soft: #111111;
+    --black-card: #161616;
+    --black-border: #222222;
+    --white: #F5F0E8;
+    --white-dim: #9A9080;
+    --red-accent: #8B1A1A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: linear-gradient(180deg, rgba(10,10,10,0.98) 0%, transparent 100%);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 700; letter-spacing: 0.25em;
+    color: var(--gold); text-transform: uppercase;
+  }
+
+  .nav-logo span { color: var(--white); font-weight: 300; }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--white-dim); text-decoration: none;
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+    transition: color .3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: transparent; border: 1px solid var(--gold);
+    color: var(--gold); padding: 0.55rem 1.6rem;
+    font-family: 'Montserrat', sans-serif; font-size: 0.65rem;
+    font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    cursor: pointer; transition: all .3s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--black); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    background: radial-gradient(ellipse at 60% 40%, rgba(201,168,76,0.07) 0%, transparent 60%),
+                linear-gradient(180deg, #0A0A0A 0%, #111111 100%);
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: linear-gradient(var(--gold) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-scissor-left {
+    position: absolute; left: -40px; top: 50%; transform: translateY(-50%) rotate(-30deg);
+    font-size: 22rem; opacity: 0.025; color: var(--gold); pointer-events: none;
+    font-family: serif;
+  }
+
+  .hero-content {
+    text-align: center; z-index: 2; padding: 0 2rem;
+    animation: fadeUp .9s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid rgba(201,168,76,0.35);
+    padding: 0.4rem 1.4rem; margin-bottom: 1.8rem;
+    background: rgba(201,168,76,0.05);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    font-weight: 700; line-height: 0.95;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+  }
+
+  .hero-title .gold { color: var(--gold); font-style: italic; }
+  .hero-title .outline {
+    -webkit-text-stroke: 1px rgba(245,240,232,0.5);
+    color: transparent;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 300; font-style: italic; color: var(--white-dim);
+    letter-spacing: 0.15em; margin: 1.2rem 0 2.5rem;
+  }
+
+  .hero-divider {
+    display: flex; align-items: center; justify-content: center; gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .hero-divider-line { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
+  .hero-divider-line.right { background: linear-gradient(90deg, var(--gold), transparent); }
+  .hero-divider-icon { color: var(--gold); font-size: 1rem; }
+
+  .hero-meta {
+    display: flex; align-items: center; justify-content: center; gap: 2rem;
+    margin-bottom: 3rem; flex-wrap: wrap;
+  }
+  .hero-meta-item { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-dim); }
+  .hero-meta-item span { color: var(--gold); display: block; font-size: 1.1rem; font-weight: 700; font-family: 'Cormorant Garamond', serif; font-style: normal; letter-spacing: 0; }
+
+  .hero-btns { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+    color: var(--black); border: none;
+    padding: 1rem 2.8rem; font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase;
+    cursor: pointer; transition: all .3s; position: relative; overflow: hidden;
+  }
+  .btn-primary::after {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left .5s;
+  }
+  .btn-primary:hover::after { left: 100%; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.4); }
+
+  .btn-secondary {
+    background: transparent; border: 1px solid rgba(201,168,76,0.4);
+    color: var(--white); padding: 1rem 2.8rem; font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    cursor: pointer; transition: all .3s;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* SECTIONS */
+  section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.45em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700;
+    line-height: 1.1; margin-bottom: 1.5rem;
+  }
+
+  .gold-line {
+    width: 50px; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin-bottom: 2rem;
+  }
+
+  /* SERVICES */
+  #servicios { padding-top: 2rem; }
+
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5px; background: var(--gold-dark); margin-top: 3rem;
+    border: 1.5px solid var(--gold-dark);
+  }
+
+  .service-card {
+    background: var(--black-card); padding: 2rem 1.8rem;
+    transition: all .3s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: scaleX(0); transition: transform .4s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { background: #1a1a1a; }
+
+  .service-icon {
+    font-size: 1.6rem; margin-bottom: 1rem; display: block;
+    filter: sepia(1) saturate(2) hue-rotate(5deg);
+  }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 600; color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+  .service-duration {
+    font-size: 0.6rem; color: var(--gold); letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 0.8rem;
+  }
+  .service-desc { font-size: 0.75rem; color: var(--white-dim); line-height: 1.7; margin-bottom: 1.2rem; }
+  .service-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 700; color: var(--gold);
+  }
+  .service-price small { font-size: 0.65rem; font-family: 'Montserrat', sans-serif; font-weight: 400; color: var(--white-dim); margin-left: 4px; }
+
+  .service-book-btn {
+    margin-top: 1.2rem; width: 100%; padding: 0.6rem;
+    background: transparent; border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold); font-family: 'Montserrat', sans-serif;
+    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    cursor: pointer; transition: all .3s;
+  }
+  .service-book-btn:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
+
+  /* BARBEROS */
+  #barberos {
+    background: linear-gradient(180deg, var(--black) 0%, var(--black-soft) 50%, var(--black) 100%);
+    max-width: 100%; padding: 6rem 3rem;
+  }
+  #barberos > .inner { max-width: 1200px; margin: 0 auto; }
+
+  .barbers-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem; margin-top: 3rem;
+  }
+
+  .barber-card {
+    background: var(--black-card); border: 1px solid var(--black-border);
+    padding: 2rem; text-align: center; transition: all .3s; cursor: pointer;
+    position: relative;
+  }
+  .barber-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-4px); }
+  .barber-card.selected { border-color: var(--gold); box-shadow: 0 0 30px var(--gold-glow); }
+
+  .barber-avatar {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700;
+    color: var(--black); margin: 0 auto 1rem;
+    border: 2px solid rgba(201,168,76,0.3);
+  }
+  .barber-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 600; margin-bottom: 0.3rem;
+  }
+  .barber-role { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+  .barber-rating { font-size: 0.75rem; color: var(--white-dim); }
+  .barber-rating span { color: var(--gold); }
+
+  .barber-select-badge {
+    position: absolute; top: 10px; right: 10px;
+    background: var(--gold); color: var(--black);
+    font-size: 0.55rem; font-weight: 800; letter-spacing: 0.1em;
+    padding: 3px 8px; display: none;
+  }
+  .barber-card.selected .barber-select-badge { display: block; }
+
+  /* BOOKING SECTION */
+  #reservar {
+    max-width: 100%;
+    background: var(--black-soft);
+    padding: 6rem 3rem;
+  }
+  #reservar > .inner { max-width: 1100px; margin: 0 auto; }
+
+  .booking-layout {
+    display: grid; grid-template-columns: 1fr 380px;
+    gap: 3rem; margin-top: 3rem;
+    align-items: start;
+  }
+
+  .booking-steps { display: flex; flex-direction: column; gap: 2rem; }
+
+  .step-block {
+    background: var(--black-card); border: 1px solid var(--black-border);
+    padding: 2rem; transition: border-color .3s;
+  }
+  .step-block.active { border-color: rgba(201,168,76,0.35); }
+
+  .step-header {
+    display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+  }
+  .step-num {
+    width: 32px; height: 32px; border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; font-weight: 800; color: var(--gold); letter-spacing: 0.1em; flex-shrink: 0;
+  }
+  .step-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; }
+
+  /* Calendar */
+  .mini-calendar { }
+  .cal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .cal-month { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; }
+  .cal-nav { background: none; border: 1px solid var(--black-border); color: var(--white-dim); width: 28px; height: 28px; cursor: pointer; font-size: 0.8rem; transition: all .3s; }
+  .cal-nav:hover { border-color: var(--gold); color: var(--gold); }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+  .cal-day-name { text-align: center; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white-dim); padding: 6px 0; }
+  .cal-day {
+    text-align: center; padding: 8px 4px;
+    font-size: 0.75rem; cursor: pointer; transition: all .2s;
+    border: 1px solid transparent;
+  }
+  .cal-day:hover:not(.disabled):not(.empty) { border-color: rgba(201,168,76,0.4); color: var(--gold); }
+  .cal-day.selected { background: var(--gold); color: var(--black); font-weight: 700; border-color: var(--gold); }
+  .cal-day.disabled { color: #333; cursor: not-allowed; }
+  .cal-day.empty { cursor: default; }
+  .cal-day.today { color: var(--gold-light); font-weight: 700; }
+
+  /* Horarios */
+  .time-slots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .time-slot {
+    padding: 0.6rem 0.4rem; border: 1px solid var(--black-border);
+    text-align: center; font-size: 0.7rem; font-weight: 600; cursor: pointer;
+    transition: all .2s; color: var(--white-dim);
+  }
+  .time-slot:hover:not(.taken) { border-color: var(--gold); color: var(--gold); }
+  .time-slot.selected { background: var(--gold); color: var(--black); border-color: var(--gold); }
+  .time-slot.taken { color: #333; cursor: not-allowed; text-decoration: line-through; font-size: 0.6rem; }
+
+  /* Form */
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-group label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+  .form-group input, .form-group textarea, .form-group select {
+    background: var(--black); border: 1px solid var(--black-border);
+    color: var(--white); padding: 0.8rem 1rem;
+    font-family: 'Montserrat', sans-serif; font-size: 0.8rem;
+    outline: none; transition: border-color .3s; width: 100%;
+    -webkit-appearance: none;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--gold); }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: #444; }
+
+  /* Resumen */
+  .booking-summary {
+    background: var(--black-card); border: 1px solid var(--black-border);
+    padding: 2rem; position: sticky; top: 90px;
+  }
+  .summary-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 600; margin-bottom: 1.5rem;
+    padding-bottom: 1rem; border-bottom: 1px solid var(--black-border);
+  }
+  .summary-row { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.75rem; align-items: start; gap: 1rem; }
+  .summary-label { color: var(--white-dim); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .summary-value { color: var(--white); text-align: right; font-weight: 500; }
+  .summary-value.gold { color: var(--gold); }
+  .summary-total {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 1.2rem; margin-top: 1.2rem; border-top: 1px solid var(--black-border);
+  }
+  .summary-total-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-dim); }
+  .summary-total-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 700; color: var(--gold);
+  }
+
+  .confirm-btn {
+    width: 100%; margin-top: 1.5rem; padding: 1rem;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+    color: var(--black); border: none; font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase;
+    cursor: pointer; transition: all .3s; position: relative; overflow: hidden;
+  }
+  .confirm-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.4); }
+  .confirm-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+  .summary-note { font-size: 0.6rem; color: var(--white-dim); margin-top: 1rem; line-height: 1.6; text-align: center; }
+
+  /* INFO SECTION */
+  #info { max-width: 100%; background: var(--black); padding: 6rem 3rem; }
+  #info > .inner { max-width: 1200px; margin: 0 auto; }
+
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px; background: var(--black-border); border: 2px solid var(--black-border); margin-top: 3rem; }
+  .info-card { background: var(--black-card); padding: 2.5rem 2rem; }
+  .info-icon { font-size: 1.5rem; margin-bottom: 1rem; display: block; }
+  .info-label { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+  .info-value { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; line-height: 1.5; }
+  .info-value small { display: block; font-family: 'Montserrat', sans-serif; font-size: 0.65rem; color: var(--white-dim); font-weight: 400; margin-top: 0.2rem; }
+
+  /* FOOTER */
+  footer {
+    background: var(--black-soft); border-top: 1px solid var(--black-border);
+    padding: 3rem; text-align: center;
+  }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.5rem; }
+  .footer-tagline { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--white-dim); margin-bottom: 2rem; }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .footer-links a { color: var(--white-dim); text-decoration: none; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color .3s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-bottom { font-size: 0.6rem; color: #333; }
+  .footer-bottom span { color: var(--gold-dark); }
+
+  /* MODAL CONFIRMACIÓN */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.9); display: none;
+    align-items: center; justify-content: center;
+    backdrop-filter: blur(6px);
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--black-card); border: 1px solid var(--gold);
+    padding: 3rem; max-width: 480px; width: 90%; text-align: center;
+    animation: fadeUp .4s ease;
+    box-shadow: 0 0 60px rgba(201,168,76,0.15);
+  }
+  .modal-icon { font-size: 3rem; margin-bottom: 1.5rem; }
+  .modal-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--gold); margin-bottom: 0.8rem; }
+  .modal-desc { font-size: 0.8rem; color: var(--white-dim); line-height: 1.8; margin-bottom: 2rem; }
+  .modal-detail { background: var(--black); padding: 1.2rem; margin-bottom: 2rem; border: 1px solid var(--black-border); font-size: 0.75rem; line-height: 2; }
+  .modal-detail strong { color: var(--gold); }
+  .modal-close {
+    background: transparent; border: 1px solid var(--gold); color: var(--gold);
+    padding: 0.8rem 2.5rem; font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    cursor: pointer; transition: all .3s;
+  }
+  .modal-close:hover { background: var(--gold); color: var(--black); }
+
+  /* DEMO BADGE */
+  .demo-badge {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 150;
+    background: var(--gold); color: var(--black);
+    font-size: 0.55rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 0.6rem 1.2rem; box-shadow: 0 4px 20px rgba(201,168,76,0.5);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    #barberos, #reservar, #info { padding: 4rem 1.5rem; }
+    .booking-layout { grid-template-columns: 1fr; }
+    .booking-summary { position: static; }
+    .form-row { grid-template-columns: 1fr; }
+    .time-slots { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- DEMO BADGE -->
+<div class="demo-badge">🎯 Demo Web</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">UOMO <span>Barbería</span></div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#barberos">Barberos</a></li>
+    <li><a href="#reservar">Reservar</a></li>
+    <li><a href="#info">Contacto</a></li>
+  </ul>
+  <button class="nav-cta" onclick="scrollToBooking()">Reservar cita</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="max-width:100%; padding:0;">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">✦ Bogotá, Colombia · Est. 2015 ✦</div>
+    <h1 class="hero-title">
+      <span class="outline">Uomo</span><br>
+      <span class="gold">Barbería</span><br>
+      <span>Tradicional</span>
+    </h1>
+    <p class="hero-subtitle">El arte del caballero moderno</p>
+    <div class="hero-divider">
+      <div class="hero-divider-line"></div>
+      <div class="hero-divider-icon">✦</div>
+      <div class="hero-divider-line right"></div>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span>4.8★</span>Calificación Google</div>
+      <div class="hero-meta-item"><span>245+</span>Reseñas</div>
+      <div class="hero-meta-item"><span>8+</span>Años de experiencia</div>
+      <div class="hero-meta-item"><span>5</span>Barberos expertos</div>
+    </div>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="scrollToBooking()">✦ Reservar mi cita</button>
+      <button class="btn-secondary" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">Ver servicios</button>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" style="max-width:1200px;">
+  <div class="section-label">✦ Lo que hacemos</div>
+  <h2 class="section-title">Nuestros <em style="color:var(--gold)">Servicios</em></h2>
+  <div class="gold-line"></div>
+  <div class="services-grid" id="servicesGrid"></div>
+</section>
+
+<!-- BARBEROS -->
+<div id="barberos">
+  <div class="inner">
+    <div class="section-label">✦ Nuestro equipo</div>
+    <h2 class="section-title">Los <em style="color:var(--gold)">Maestros</em></h2>
+    <div class="gold-line"></div>
+    <div class="barbers-grid" id="barbersGrid"></div>
+  </div>
+</div>
+
+<!-- RESERVAR -->
+<div id="reservar">
+  <div class="inner">
+    <div class="section-label">✦ Agenda tu cita</div>
+    <h2 class="section-title">Reserva <em style="color:var(--gold)">Online</em></h2>
+    <div class="gold-line"></div>
+    <div class="booking-layout">
+      <div class="booking-steps">
+
+        <!-- STEP 1: SERVICIO -->
+        <div class="step-block active">
+          <div class="step-header">
+            <div class="step-num">01</div>
+            <div class="step-title">Elige tu servicio</div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;" id="bookingServices"></div>
+        </div>
+
+        <!-- STEP 2: BARBERO -->
+        <div class="step-block">
+          <div class="step-header">
+            <div class="step-num">02</div>
+            <div class="step-title">Elige tu barbero</div>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px;" id="bookingBarbers"></div>
+        </div>
+
+        <!-- STEP 3: FECHA -->
+        <div class="step-block">
+          <div class="step-header">
+            <div class="step-num">03</div>
+            <div class="step-title">Selecciona fecha</div>
+          </div>
+          <div class="mini-calendar" id="miniCalendar"></div>
+        </div>
+
+        <!-- STEP 4: HORA -->
+        <div class="step-block">
+          <div class="step-header">
+            <div class="step-num">04</div>
+            <div class="step-title">Selecciona hora</div>
+          </div>
+          <div class="time-slots" id="timeSlots"></div>
+        </div>
+
+        <!-- STEP 5: DATOS -->
+        <div class="step-block">
+          <div class="step-header">
+            <div class="step-num">05</div>
+            <div class="step-title">Tus datos</div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" id="fname" placeholder="Tu nombre" oninput="updateSummary()">
+            </div>
+            <div class="form-group">
+              <label>Apellido</label>
+              <input type="text" id="lname" placeholder="Tu apellido">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Teléfono / WhatsApp</label>
+              <input type="tel" id="phone" placeholder="+57 300 000 0000">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="email" placeholder="tu@correo.com">
+            </div>
+          </div>
+          <div class="form-group" style="margin-top:0.5rem;">
+            <label>Notas (opcional)</label>
+            <textarea id="notes" placeholder="¿Alguna preferencia o indicación especial?" rows="2" style="resize:vertical;"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESUMEN -->
+      <div class="booking-summary" id="bookingSummary">
+        <div class="summary-title">✦ Resumen de cita</div>
+        <div class="summary-row">
+          <span class="summary-label">Servicio</span>
+          <span class="summary-value gold" id="sum-service">—</span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-label">Barbero</span>
+          <span class="summary-value" id="sum-barber">—</span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-label">Fecha</span>
+          <span class="summary-value" id="sum-date">—</span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-label">Hora</span>
+          <span class="summary-value" id="sum-time">—</span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-label">Duración</span>
+          <span class="summary-value" id="sum-duration">—</span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-label">Cliente</span>
+          <span class="summary-value" id="sum-client">—</span>
+        </div>
+        <div class="summary-total">
+          <span class="summary-total-label">Total</span>
+          <span class="summary-total-price" id="sum-price">$0</span>
+        </div>
+        <button class="confirm-btn" id="confirmBtn" onclick="confirmBooking()">Confirmar Reserva ✦</button>
+        <p class="summary-note">Al confirmar recibirás un recordatorio por WhatsApp. Sin cobro anticipado.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INFO -->
+<div id="info">
+  <div class="inner">
+    <div class="section-label">✦ Encuéntranos</div>
+    <h2 class="section-title">Visítanos en <em style="color:var(--gold)">Bogotá</em></h2>
+    <div class="gold-line"></div>
+    <div class="info-grid">
+      <div class="info-card">
+        <span class="info-icon">📍</span>
+        <div class="info-label">Dirección</div>
+        <div class="info-value">Cra. 49 #166-29<small>Bogotá, Colombia</small></div>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">📞</span>
+        <div class="info-label">Teléfono</div>
+        <div class="info-value">+57 310 313 5397<small>WhatsApp disponible</small></div>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">🕐</span>
+        <div class="info-label">Lunes — Viernes</div>
+        <div class="info-value">9:00 — 19:00<small>Atención con cita</small></div>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">🕐</span>
+        <div class="info-label">Sábados</div>
+        <div class="info-value">9:00 — 17:00<small>Domingos cerrado</small></div>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">⭐</span>
+        <div class="info-label">Calificación</div>
+        <div class="info-value">4.8 / 5.0<small>245 reseñas en Google</small></div>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">💳</span>
+        <div class="info-label">Pagos</div>
+        <div class="info-value">Efectivo · Nequi<small>Daviplata · Tarjeta</small></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">UOMO</div>
+  <div class="footer-tagline">Barbería Tradicional · Bogotá</div>
+  <div class="footer-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#barberos">Barberos</a>
+    <a href="#reservar">Reservar</a>
+    <a href="https://wa.me/573103135397" target="_blank">WhatsApp</a>
+  </div>
+  <div class="footer-bottom">© 2025 UOMO Barbería Tradicional · Cra. 49 #166-29, Bogotá · <span>Demo web diseñada para presentar propuesta</span></div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-icon">✦</div>
+    <div class="modal-title">¡Cita Confirmada!</div>
+    <div class="modal-desc">Tu reserva ha sido registrada con éxito. Te enviaremos un recordatorio por WhatsApp 24 horas antes.</div>
+    <div class="modal-detail" id="modalDetail"></div>
+    <button class="modal-close" onclick="closeModal()">Cerrar ✦</button>
+  </div>
+</div>
+
+<script>
+// ========== DATA ==========
+const services = [
+  { id:1, name:"Corte Clásico", duration:"45 min", price:35000, icon:"✂️", desc:"Corte con máquina y tijera, shampoo y peinado profesional." },
+  { id:2, name:"Corte + Barba", duration:"75 min", price:55000, icon:"🪒", desc:"Servicio completo: corte, arreglo de barba y toalla caliente." },
+  { id:3, name:"Arreglo de Barba", duration:"40 min", price:28000, icon:"🧔", desc:"Diseño, contorneado y perfilado con navaja tradicional." },
+  { id:4, name:"Afeitado Clásico", duration:"50 min", price:38000, icon:"🪥", desc:"Ritual completo con espuma, navaja y toallas calientes." },
+  { id:5, name:"Corte Niños", duration:"35 min", price:25000, icon:"👦", desc:"Corte especial para niños hasta 12 años, con paciencia y esmero." },
+  { id:6, name:"Combo Premium", duration:"90 min", price:75000, icon:"👑", desc:"Corte + Barba + Limpieza facial + Bebida de cortesía." },
+];
+
+const barbers = [
+  { id:1, name:"Carlos Mejía", role:"Master Barber", rating:"4.9", initials:"CM" },
+  { id:2, name:"Andrés Torres", role:"Senior Barber", rating:"4.8", initials:"AT" },
+  { id:3, name:"Felipe Ruiz", role:"Senior Barber", rating:"4.8", initials:"FR" },
+  { id:4, name:"Diego Vargas", role:"Barber", rating:"4.7", initials:"DV" },
+  { id:5, name:"Sin preferencia", role:"Cualquier disponible", rating:"—", initials:"✦" },
+];
+
+const takenSlots = ["09:30","10:30","13:00","14:30","16:00"];
+const timeSlots = ["09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30"];
+
+// ========== STATE ==========
+let state = { service: null, barber: null, date: null, time: null };
+let calYear = new Date().getFullYear();
+let calMonth = new Date().getMonth();
+
+// ========== RENDER SERVICES ==========
+function renderServices() {
+  const grid = document.getElementById('servicesGrid');
+  grid.innerHTML = services.map(s => `
+    <div class="service-card" onclick="void(0)">
+      <span class="service-icon">${s.icon}</span>
+      <div class="service-name">${s.name}</div>
+      <div class="service-duration">${s.duration}</div>
+      <div class="service-desc">${s.desc}</div>
+      <div class="service-price">$${s.price.toLocaleString('es-CO')}<small>COP</small></div>
+      <button class="service-book-btn" onclick="event.stopPropagation(); selectService(${s.id}); scrollToBooking();">Reservar este servicio</button>
+    </div>
+  `).join('');
+}
+
+// ========== RENDER BARBERS ==========
+function renderBarbers() {
+  const grid = document.getElementById('barbersGrid');
+  grid.innerHTML = barbers.map(b => `
+    <div class="barber-card" onclick="void(0)">
+      <div class="barber-select-badge">✓ Elegido</div>
+      <div class="barber-avatar">${b.initials}</div>
+      <div class="barber-name">${b.name}</div>
+      <div class="barber-role">${b.role}</div>
+      <div class="barber-rating">⭐ <span>${b.rating}</span></div>
+    </div>
+  `).join('');
+}
+
+// ========== RENDER BOOKING SERVICES ==========
+function renderBookingServices() {
+  const el = document.getElementById('bookingServices');
+  el.innerHTML = services.map(s => `
+    <div onclick="selectService(${s.id})" style="border:1px solid var(--black-border);padding:0.8rem;cursor:pointer;transition:all .2s;font-size:0.75rem;" 
+         id="bsvc-${s.id}" class="bsvc-item">
+      <div style="font-size:1.2rem;margin-bottom:4px;">${s.icon}</div>
+      <div style="font-weight:600;margin-bottom:2px;">${s.name}</div>
+      <div style="color:var(--gold);font-size:0.7rem;">$${s.price.toLocaleString('es-CO')}</div>
+      <div style="color:var(--white-dim);font-size:0.6rem;">${s.duration}</div>
+    </div>
+  `).join('');
+}
+
+function selectService(id) {
+  state.service = services.find(s => s.id === id);
+  document.querySelectorAll('.bsvc-item').forEach(el => {
+    el.style.borderColor = 'var(--black-border)';
+    el.style.background = 'transparent';
+    el.style.color = 'var(--white)';
+  });
+  const el = document.getElementById('bsvc-' + id);
+  if (el) { el.style.borderColor = 'var(--gold)'; el.style.background = 'rgba(201,168,76,0.08)'; }
+  updateSummary();
+}
+
+// ========== RENDER BOOKING BARBERS ==========
+function renderBookingBarbers() {
+  const el = document.getElementById('bookingBarbers');
+  el.innerHTML = barbers.map(b => `
+    <div onclick="selectBarber(${b.id})" id="bbar-${b.id}"
+         style="border:1px solid var(--black-border);padding:0.8rem;cursor:pointer;transition:all .2s;text-align:center;">
+      <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold));display:flex;align-items:center;justify-content:center;font-size:0.9rem;font-weight:700;color:var(--black);margin:0 auto 6px;">${b.initials}</div>
+      <div style="font-size:0.65rem;font-weight:600;">${b.name.split(' ')[0]}</div>
+      <div style="font-size:0.55rem;color:var(--gold);">${b.role}</div>
+    </div>
+  `).join('');
+}
+
+function selectBarber(id) {
+  state.barber = barbers.find(b => b.id === id);
+  document.querySelectorAll('[id^="bbar-"]').forEach(el => {
+    el.style.borderColor = 'var(--black-border)';
+    el.style.background = 'transparent';
+  });
+  const el = document.getElementById('bbar-' + id);
+  if (el) { el.style.borderColor = 'var(--gold)'; el.style.background = 'rgba(201,168,76,0.08)'; }
+  updateSummary();
+}
+
+// ========== CALENDAR ==========
+const monthNames = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+const dayNames = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+
+function renderCalendar() {
+  const el = document.getElementById('miniCalendar');
+  const today = new Date();
+  const firstDay = new Date(calYear, calMonth, 1).getDay();
+  const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+
+  let html = `
+    <div class="cal-header">
+      <button class="cal-nav" onclick="prevMonth()">‹</button>
+      <span class="cal-month">${monthNames[calMonth]} ${calYear}</span>
+      <button class="cal-nav" onclick="nextMonth()">›</button>
+    </div>
+    <div class="cal-grid">
+      ${dayNames.map(d => `<div class="cal-day-name">${d}</div>`).join('')}
+      ${Array(firstDay).fill('<div class="cal-day empty"></div>').join('')}
+  `;
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const date = new Date(calYear, calMonth, d);
+    const isToday = date.toDateString() === today.toDateString();
+    const isPast = date < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const isSunday = date.getDay() === 0;
+    const dateStr = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const isSelected = state.date === dateStr;
+    let cls = 'cal-day';
+    if (isPast || isSunday) cls += ' disabled';
+    else if (isSelected) cls += ' selected';
+    else if (isToday) cls += ' today';
+    html += `<div class="${cls}" onclick="${(isPast||isSunday)?'':'selectDate(\''+dateStr+'\')'}"> ${d}</div>`;
+  }
+
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+function prevMonth() {
+  calMonth--; if (calMonth < 0) { calMonth = 11; calYear--; } renderCalendar();
+}
+function nextMonth() {
+  calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; } renderCalendar();
+}
+
+function selectDate(dateStr) {
+  state.date = dateStr;
+  renderCalendar();
+  renderTimeSlots();
+  updateSummary();
+}
+
+// ========== TIME SLOTS ==========
+function renderTimeSlots() {
+  const el = document.getElementById('timeSlots');
+  el.innerHTML = timeSlots.map(t => {
+    const isTaken = takenSlots.includes(t);
+    const isSelected = state.time === t;
+    let cls = 'time-slot';
+    if (isTaken) cls += ' taken';
+    else if (isSelected) cls += ' selected';
+    return `<div class="${cls}" onclick="${isTaken?'':'selectTime(\''+t+'\')'}"> ${t}${isTaken?' ✗':''}</div>`;
+  }).join('');
+}
+
+function selectTime(t) {
+  state.time = t; renderTimeSlots(); updateSummary();
+}
+
+// ========== SUMMARY ==========
+function updateSummary() {
+  document.getElementById('sum-service').textContent = state.service ? state.service.name : '—';
+  document.getElementById('sum-barber').textContent = state.barber ? state.barber.name : '—';
+  document.getElementById('sum-date').textContent = state.date ? formatDate(state.date) : '—';
+  document.getElementById('sum-time').textContent = state.time || '—';
+  document.getElementById('sum-duration').textContent = state.service ? state.service.duration : '—';
+  const fname = document.getElementById('fname')?.value || '';
+  const lname = document.getElementById('lname')?.value || '';
+  document.getElementById('sum-client').textContent = (fname || lname) ? `${fname} ${lname}`.trim() : '—';
+  document.getElementById('sum-price').textContent = state.service ? `$${state.service.price.toLocaleString('es-CO')}` : '$0';
+
+  const ready = state.service && state.barber && state.date && state.time;
+  document.getElementById('confirmBtn').disabled = !ready;
+}
+
+function formatDate(str) {
+  const [y,m,d] = str.split('-');
+  return `${d} de ${monthNames[parseInt(m)-1]} ${y}`;
+}
+
+// ========== CONFIRM ==========
+function confirmBooking() {
+  const fname = document.getElementById('fname').value || 'Cliente';
+  const lname = document.getElementById('lname').value || '';
+  document.getElementById('modalDetail').innerHTML = `
+    <strong>Servicio:</strong> ${state.service.name}<br>
+    <strong>Barbero:</strong> ${state.barber.name}<br>
+    <strong>Fecha:</strong> ${formatDate(state.date)}<br>
+    <strong>Hora:</strong> ${state.time}<br>
+    <strong>Total:</strong> $${state.service.price.toLocaleString('es-CO')} COP<br>
+    <strong>Cliente:</strong> ${fname} ${lname}
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+
+function scrollToBooking() {
+  document.getElementById('reservar').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ========== INIT ==========
+renderServices();
+renderBarbers();
+renderBookingServices();
+renderBookingBarbers();
+renderCalendar();
+renderTimeSlots();
+updateSummary();
+</script>
+</body>
+</html>
